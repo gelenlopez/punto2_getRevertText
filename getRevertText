@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+void getRevertText(char *text) {
+    int length = strlen(text);
+    int i, j;
+    char temp;
+
+    for (i = 0, j = length - 1; i < j; i++, j--) {
+        temp = text[i];
+        text[i] = text[j];
+        text[j] = temp;
+    }
+}
+
+int main() {
+    char text[100];
+
+    printf("Ingrese una cadena de texto: ");
+    fgets(text, sizeof(text), stdin);
+
+    // Eliminar el salto de línea del final
+    if (text[strlen(text) - 1] == '\n')
+        text[strlen(text) - 1] = '\0';
+
+    getRevertText(text);
+
+    printf("Cadena revertida: %s\n", text);
+
+    return 0;
+}
+
